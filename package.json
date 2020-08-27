@@ -2,9 +2,14 @@
   "private": true,
   "scripts": {
     "dev": "elm-app start",
-    "build": "elm-app build"
+    "build": "elm-app build && npm run build:slides",
+    "build:slides": "parcel build slides/index.html --out-dir build/slides"
   },
   "dependencies": {
-    "create-elm-app": "^4.2.26"
+    "create-elm-app": "^4.2.26",
+    "elm-format": "^0.8.3",
+    "fonts": "^0.0.2",
+    "parcel-bundler": "^1.12.4",
+    "reveal.js": "^4.0.2"
   }
 }

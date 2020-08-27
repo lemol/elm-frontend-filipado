@@ -176,7 +176,9 @@ mainSection =
                     (text "QCRM activity dashboard")
                 ]
             , row
-                [ spacing 48 ]
+                [ width fill
+                , spacing 48
+                ]
                 [ column
                     [ spacing 24
                     ]
@@ -195,7 +197,8 @@ mainSection =
                         ]
                     ]
                 , column
-                    [ height fill
+                    [ alignRight
+                    , height fill
                     , spacing 24
                     ]
                     [ row
