@@ -1,0 +1,68 @@
+module Colors exposing (..)
+
+import Element exposing (Color, rgb255, rgba255)
+
+
+gray1 : Color
+gray1 =
+    rgb255 0xF6 0xF5 0xFA
+
+
+gray2 : Color
+gray2 =
+    rgb255 0xB0 0xBE 0xC8
+
+
+gray3 : Color
+gray3 =
+    rgb255 0xAC 0xB6 0xBE
+
+
+gray4 : Color
+gray4 =
+    rgb255 0x95 0xA6 0xB0
+
+
+gray5 : Color
+gray5 =
+    rgb255 0xFF 0x94 0x00
+
+
+logo : Color
+logo =
+    rgb255 0x62 0x00 0xFF
+
+
+red1 : Color
+red1 =
+    rgb255 0xFF 0x01 0x00
+
+
+yellow1 : Color
+yellow1 =
+    rgb255 0xFF 0xF8 0x96
+
+
+yellow2 : Color
+yellow2 =
+    rgb255 0xEE 0x9D 0x30
+
+
+yellow3 : Color
+yellow3 =
+    rgb255 0xF5 0xB1 0x32
+
+
+purple1 : Color
+purple1 =
+    rgb255 0xE9 0xE0 0xFA
+
+
+white : Color
+white =
+    rgb255 0xFF 0xFF 0xFF
+
+
+transparent : Color
+transparent =
+    rgba255 0xFF 0xFF 0xFF 0

@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Ant.Icon as Icon
 import Ant.Icons as Icons
+import Colors
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
@@ -12,17 +13,19 @@ import Illustrations exposing (illustration1)
 
 main : Html msg
 main =
-    layout
-        []
-        (row
-            [ height fill
-            , width fill
-            ]
-            [ menuBar
-            , mainSection
-            , rightSection
-            ]
-        )
+    layout [] view
+
+
+view : Element msg
+view =
+    row
+        [ height fill
+        , width fill
+        ]
+        [ menuBar
+        , mainSection
+        , rightSection
+        ]
 
 
 menuBar : Element msg
@@ -30,7 +33,7 @@ menuBar =
     el
         [ width (px 123)
         , height fill
-        , Background.color <| rgb255 0xF6 0xF5 0xFA
+        , Background.color Colors.gray1
         ]
         (column
             [ centerX
@@ -40,7 +43,7 @@ menuBar =
             [ Icons.gitlabFilled
                 [ Icon.width 42
                 , Icon.height 42
-                , Icon.fill (rgb255 0x62 0x00 0xFF)
+                , Icon.fill Colors.logo
                 ]
                 |> el [ centerX ]
             , column
@@ -61,12 +64,12 @@ menuBar =
                 , height (px 52)
                 , inFront
                     (el
-                        [ Background.color (rgb255 0xFF 0x01 0x00)
+                        [ Background.color Colors.red1
                         , Border.width 2
                         , Border.rounded 8
-                        , Border.color (rgb255 0xFF 0xFF 0xFF)
+                        , Border.color Colors.white
                         , Font.size 10
-                        , Font.color (rgb255 0xFF 0xFF 0xFF)
+                        , Font.color Colors.white
                         , paddingXY 6 4
                         , moveLeft 2
                         , moveUp 2
@@ -78,11 +81,11 @@ menuBar =
                     [ centerX
                     , centerY
                     , clip
-                    , Border.color (rgb255 0xFF 0xFF 0xFF)
+                    , Border.color Colors.white
                     , Border.width 4
                     , Border.rounded 50
                     ]
-                    { src = "https://api.adorable.io/avatars/48/filipado.png"
+                    { src = "https://picsum.photos/48/48?random=1"
                     , description = "filipado"
                     }
                 )
@@ -98,14 +101,14 @@ menuItem icon isActive =
         , width (px 48)
         , height (px 48)
         , if isActive then
-            Background.color (rgb255 0xE9 0xE0 0xFA)
+            Background.color Colors.purple1
 
           else
-            Background.color (rgba255 0xE9 0xE0 0xFA 0)
+            Background.color Colors.transparent
         , Border.rounded 50
         ]
         (icon
-            [ Icon.fill (rgb255 0xB0 0xBE 0xC8)
+            [ Icon.fill Colors.gray2
             , Icon.width 20
             , Icon.height 20
             ]
@@ -126,10 +129,10 @@ mainSection =
             [ width fill
             ]
             [ row
-                [ Background.color (rgb255 0xF6 0xF5 0xFA)
+                [ Background.color Colors.gray1
                 , Border.rounded 46
                 , Font.size 16
-                , Font.color (rgb255 0xAC 0xB6 0xBE)
+                , Font.color Colors.gray3
                 , padding 16
                 , spacing 8
                 , width (px 600)
@@ -144,7 +147,7 @@ mainSection =
                 ]
             , el
                 [ alignRight
-                , Font.color (rgb255 0xAC 0xB6 0xBE)
+                , Font.color Colors.gray3
                 ]
                 (Icons.settingFilled
                     [ Icon.width 18 ]
@@ -171,7 +174,7 @@ mainSection =
                     ]
                 , el
                     [ Font.size 16
-                    , Font.color (rgb255 0xAC 0xB6 0xBE)
+                    , Font.color Colors.gray3
                     ]
                     (text "QCRM activity dashboard")
                 ]
@@ -188,7 +191,7 @@ mainSection =
                     , column
                         [ centerX
                         , Font.size 14
-                        , Font.color (rgb255 0xAC 0xB6 0xBE)
+                        , Font.color Colors.gray3
                         ]
                         [ text "Oportunity pipeline"
                             |> el [ centerX ]
@@ -209,7 +212,7 @@ mainSection =
                             , height (px 184)
                             , spacing 24
                             , Border.rounded 24
-                            , Background.color (rgb255 0xFF 0xF8 0x96)
+                            , Background.color Colors.yellow1
                             ]
                             [ el
                                 [ centerX
@@ -222,8 +225,8 @@ mainSection =
                                     , width (px 78)
                                     , height (px 78)
                                     , Font.semiBold
-                                    , Font.color (rgb255 0xEE 0x9D 0x30)
-                                    , Background.color (rgb255 0xFF 0xFF 0xFF)
+                                    , Font.color Colors.yellow2
+                                    , Background.color Colors.white
                                     , Border.rounded 50
                                     ]
                             , text "Open Leads"
@@ -231,7 +234,8 @@ mainSection =
                                     [ centerX
                                     , centerY
                                     , Font.size 16
-                                    , Font.color (rgb255 0xF5 0xB1 0x32)
+                                    , Font.semiBold
+                                    , Font.color Colors.yellow3
                                     ]
                             ]
                         , column
@@ -239,7 +243,7 @@ mainSection =
                             , height (px 184)
                             , spacing 24
                             , Border.rounded 24
-                            , Background.color (rgb255 0xF6 0xF5 0xFA)
+                            , Background.color Colors.gray1
                             ]
                             [ el
                                 [ centerX
@@ -252,8 +256,8 @@ mainSection =
                                     , width (px 78)
                                     , height (px 78)
                                     , Font.semiBold
-                                    , Font.color (rgb255 0x95 0xA6 0xB0)
-                                    , Background.color (rgb255 0xFF 0xFF 0xFF)
+                                    , Font.color Colors.gray4
+                                    , Background.color Colors.white
                                     , Border.rounded 50
                                     ]
                             , text "Opportunities"
@@ -261,7 +265,8 @@ mainSection =
                                     [ centerX
                                     , centerY
                                     , Font.size 16
-                                    , Font.color (rgb255 0x95 0xA6 0xB0)
+                                    , Font.semiBold
+                                    , Font.color Colors.gray4
                                     ]
                             ]
                         ]
@@ -270,29 +275,14 @@ mainSection =
                         , height fill
                         , spacing 24
                         , Border.rounded 24
-                        , Background.color (rgb255 0xF6 0xF5 0xFA)
+                        , Background.color Colors.gray1
+                        , padding 32
                         ]
-                        [ el
-                            [ centerX
-                            , centerY
-                            ]
-                            (text "7")
+                        [ text "Goal Progress"
                             |> el
-                                [ centerX
-                                , centerY
-                                , width (px 78)
-                                , height (px 78)
+                                [ Font.size 16
                                 , Font.semiBold
-                                , Font.color (rgb255 0x95 0xA6 0xB0)
-                                , Background.color (rgb255 0xFF 0xFF 0xFF)
-                                , Border.rounded 50
-                                ]
-                        , text "Opportunities"
-                            |> el
-                                [ centerX
-                                , centerY
-                                , Font.size 16
-                                , Font.color (rgb255 0x95 0xA6 0xB0)
+                                , Font.color Colors.gray4
                                 ]
                         ]
                     ]
@@ -306,15 +296,16 @@ rightSection =
     column
         [ width (px 310)
         , height fill
-        , Background.color <| rgb255 0xF6 0xF5 0xFA
+        , Background.color <| Colors.gray1
         , paddingXY 32 66
+        , spacing 32
         ]
         [ row
             [ width fill ]
             [ el
                 [ Font.size 16
                 , Font.semiBold
-                , Font.color (rgb255 0xAC 0xB6 0xBE)
+                , Font.color Colors.gray3
                 ]
                 (text "Leads")
             , el
@@ -322,8 +313,8 @@ rightSection =
                 , width (px 28)
                 , height (px 28)
                 , Font.size 16
-                , Font.color (rgb255 0xFF 0xFF 0xFF)
-                , Background.color (rgb255 0xFF 0x94 0x00)
+                , Font.color Colors.white
+                , Background.color Colors.gray5
                 , Border.rounded 6
                 ]
                 (Icons.plusOutlined
