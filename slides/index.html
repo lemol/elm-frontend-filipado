@@ -1,67 +1,247 @@
 <html>
-  <head> </head>
+  <head>
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown data-separator="---">
+        <section
+          data-markdown
+          data-separator="^\n\n\n"
+          data-separator-vertical="^\n\n"
+        >
           <textarea data-template>
-            <img src="assets/elm_logo.svg" alt="drawing" width="200"/>
-
-            ## Construção de um frontend filipado usando Elm
+            ## Construção de um frontend filipado usando Elm <img src="assets/elm_logo.svg" alt="elm logo" class="elm-logo" width="46"/>
+            &nbsp;
+            ... todo mundo pode!
+            
             &nbsp;
 
-            ... todo mundo pode!
             ---
-            ## What?
-            ---
+
+            [elm-frontend-filipado.lemol.ao/slides](https://elm-frontend-filipado.lemol.ao/slides)
             
-            ---
-            1. Introdução à programação funcional
-            ---
-            ### Introdução a programação funcional
+
+
+            ## Definições
+
+
+            ### Elm <img src="assets/elm_logo.svg" alt="elm logo" class="elm-logo" width="32" />
+
+            - A delightful language
             
-            - Lambda Calculus ()
+              - for reliable webapps <!-- .element: class="fragment" data-fragment-index="1" -->
+
+              - with no runtime exceptions <!-- .element: class="fragment" data-fragment-index="2" -->
+
+              - for data visualization <!-- .element: class="fragment" data-fragment-index="3" -->
+
+              - with friendly error messages <!-- .element: class="fragment" data-fragment-index="4" -->
+
+              - for 3D graphics <!-- .element: class="fragment" data-fragment-index="5" -->
+
+            - [https://elm-lang.org/](https://elm-lang.org/) <!-- .element: class="fragment" data-fragment-index="6" -->
+
+
+            ### Filipado
+
+            fi.li.pa.do
+
+            [adjectivo] tipo assim, um mambu bem forte... como é que te explico...?
+            é algo bem filipado!
+
+            Fonte: <!-- .element: class="fragment" data-fragment-index="1" -->
+            qualquer angolano <!-- .element: class="fragment" data-fragment-index="2" --> <i data-feather="smile" class="fragment" data-fragment-index="2"></i>
+
+
+            ### Sumário
+
+
+            1. Implementação do desenho com Elm <!-- .element: class="fragment" data-fragment-index="1" -->
+
+            2. Breve introdução sobre programação funcional <!-- .element: class="fragment" data-fragment-index="2" -->
+
+            3. Elm propriamente dito <!-- .element: class="fragment" data-fragment-index="3" -->
+
+            
+
+            ### Leza Lutonda
+
+            <i data-feather="github" class="fragment" data-fragment-index="2"></i> [lemol](https://github.com/lemol) &nbsp;&nbsp; <!-- .element: class="fragment" data-fragment-index="2" -->
+            <i data-feather="twitter" class="fragment" data-fragment-index="2"></i> [@lemolsoft](https://twitter.com/lemolsoft) &nbsp;&nbsp; <!-- .element: class="fragment" data-fragment-index="2" -->
+            <i data-feather="linkedin" class="fragment" data-fragment-index="2"></i> [Leza Lutonda](https://twitter.com/lemolsoft) <!-- .element: class="fragment" data-fragment-index="2" -->
+
+            - alias Lemol / Lemol-C
+
+            - Backend & Frontend Engineer
+
+            - Elm, C#, Typescript/Javascript (React, Nodejs)
+
+            
+
+            ## Implementação do desenho com Elm
+
+
+            [https://dribbble.com/shots/7012166-QCRM-Dashboard](https://dribbble.com/shots/7012166-QCRM-Dashboard)
+
+
+            Resultado: [https://github.com/lemol/elm-frontend-filipado](https://github.com/lemol/elm-frontend-filipado)
+
+
+            ### Breve introdução sobre programação funcional
+            
+
+            - Lambda Calculus
 
             - Functors
-
-            - Monads
-
-            - Applicative Functor
 
             - Category Theory
 
             - Currying
 
-            ---
             - Algebraic data type
-
-            - Idempotent
 
             - Monoid
 
-            - Morphism
+            - Endomorphism
 
-              - Endomorphism
+            - Isomorphism
 
-              - Isomorphism
+            - Catamorphism
 
-              - Catamorphism
+            - Monad
 
-            - Semigroup
-            ---
-            ## Monad
+
+
+            ### Monad
 
             A monad is just a monoid in the category of endofunctors, what's the problem?
-            ---
-            1. whyfp http://www.cse.chalmers.se/~rjmh/Papers/whyfp.pdf
 
-            1. http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html
+            
+            ### Cita as linguagens funcionais que conheces
 
-            1. https://www.youtube.com/watch?v=06x8Wf2r2Mc
+            - Responsta:
+
+              - Haskell
+
+              - Erlang
+
+              - Elixir
+
+              - F#
+
+              - Scala
+
+              - OCaml
+
+              - etc...
+
+
+            
+            ## Elm propriamente dito
+
+
+            >> Elm is a functional language that compiles to JavaScript. <!-- .element: class="fragment" data-fragment-index="1" -->
+
+            >> It helps you make websites and web apps. It has a strong emphasis on simplicity and quality tooling. <!-- .element: class="fragment" data-fragment-index="2" -->
+
+            [https://guide.elm-lang.org/](https://guide.elm-lang.org/)
+
+
+            <!-- .slide: data-background="#ffffff" -->
+
+            ![Basic](assets/basic.svg)
+
+
+            <!-- .slide: data-background="#ffffff" -->
+
+            <img src="assets/basic.svg" alt="basic" width="256" />
+
+            ```elm
+            type Msg = Increment | Decrement
+
+            update msg model =
+              case msg of
+                Increment ->
+                  model + 1
+
+                Decrement ->
+                  model - 1
+
+            view model =
+              div []
+                [ button [ onClick Decrement ] [ text "-" ]
+                , div [] [ text (String.fromInt model) ]
+                , button [ onClick Increment ] [ text "+" ]
+                ]
+            ```
+
+
+            ### The Elm Architecture (TEA)
+
+            Model View Update (MVU)
+
+            ```elm
+            type Msg = Increment | Decrement
+
+            update msg model =
+              case msg of
+                Increment ->
+                  model + 1
+
+                Decrement ->
+                  model - 1
+
+            view model =
+              div []
+                [ button [ onClick Decrement ] [ text "-" ]
+                , div [] [ text (String.fromInt model) ]
+                , button [ onClick Increment ] [ text "+" ]
+                ]
+            ```
+
+
+            ```elm
+            type Msg = Increment | Decrement
+
+            update : Msg -> Int -> Int
+            update msg model =
+              case msg of
+                Increment ->
+                  model + 1
+
+                Decrement ->
+                  model - 1
+
+            view : Int -> Html msg
+            view model =
+              div []
+                [ button [ onClick Decrement ] [ text "-" ]
+                , div [] [ text (String.fromInt model) ]
+                , button [ onClick Increment ] [ text "+" ]
+                ]
+            ```
+
+
+            ### Recursos
+
+            - [Live](https://elm-frontend-filipado.lemol.ao)
+
+            - [Código fonte](https://github.com/lemol/elm-frontend-filipado)
+
+            - [Site oficial do Elm](https://elm-lang.org)
+
+            - [Why Functional Programming Matters](http://www.cse.chalmers.se/~rjmh/Papers/whyfp.pdf)
+
+            - [Haskell History](https://www.youtube.com/watch?v=06x8Wf2r2Mc)
+
           </textarea>
         </section>
       </div>
     </div>
     <script src="./index.js"></script>
+    <script>
+      feather.replace();
+    </script>
   </body>
 </html>
