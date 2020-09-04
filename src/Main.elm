@@ -332,19 +332,3 @@ rightSection =
                 )
             ]
         ]
-
-
-
-{-
-
-   30/07
-
-   CDI
-
-   OPEs
-
-   Rede Comercial -> DCC
-   Revalidar Reportes ao BNA
-   04/09
-
--}
